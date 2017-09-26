@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title: "What was with that old web site?"
 author: Jason Stubbs
 ---
