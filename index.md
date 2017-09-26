@@ -1,6 +1,6 @@
 {% for post in site.posts %}
 
-<h1><a href="{{ post.url }}">{{ post.title }}</a></h1>
+<h1 class="compact-text"><a href="{{ post.url }}">{{ post.title }}</a></h1>
 
 <div class="post-meta">
     <div>by {{ post.author }}</div>
