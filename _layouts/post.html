@@ -1,21 +1,39 @@
-{% include header.html %}
+---
+layout: default
+---
 
-<h1 class="compact-text">{{ page.title }}</h1>
+{% capture exact_word_count %}{{ page.content | number_of_words }}{% endcapture %}
+{% assign digit_count = exact_word_count | size %}
+{% assign approx_word_count = exact_word_count %}
+{% for i in (3..digit_count) %}
+    {% assign approx_word_count = approx_word_count | divided_by: 10.0 %}
+{% endfor %}
+{% assign approx_word_count = approx_word_count | plus: 0.5 | floor %}
+{% for i in (3..digit_count) %}
+    {% assign approx_word_count = approx_word_count | append: '0' %}
+{% endfor %}
 
-<div class="post-meta">
-    <div>by {{ page.author }}</div>
-    <div>on {{ page.date  | date_to_long_string}}</div>
-    {% if page.comments %}
-    <div>with <a href="{{ site.url }}{{ page.url }}#disqus_thread">0 Comments</a></div>
-    {% endif %}
+{% assign exact_read_time = approx_word_count | plus: 90 | divided_by: 180 %}
+{% if exact_read_time < 5 %}
+    {% assign approx_read_time = exact_read_time %}
+{% else %}
+    {% assign approx_read_time = exact_read_time | plus: 2 | divided_by: 5 | times: 5 %}
+{% endif %}
+
+<h1>{{ page.title }}</h1>
+
+<ul class="meta"><li>by {{ page.author }}</li><li>{{ page.date | date_to_long_string }}</li><li>{% include numberWithCommas.html number=approx_word_count %} words</li><li>{% if approx_read_time <= 1 %}1 minute{% else %}{{ approx_read_time }} minutes{% endif %} to read</li></ul>
+
+
+<!--
+<ul class="meta">
+    <li><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date_to_long_string}}</time></li>
+    <li></li>
+</ul>
+-->
+
+<div class="content">
+{{ content }}
 </div>
 
-<div class="post-content">
-    {{ content }}
-</div>
-
-<div class="post-comments">
-    {% include disqus.html %}
-</div>
-
-{% include footer.html %}
+{% include disqus.html %}

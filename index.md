@@ -1,3 +1,8 @@
+---
+layout: default
+title: Home
+---
+
 {% for post in site.posts %}
 
 <h1 class="compact-text"><a href="{{ post.url }}">{{ post.title }}</a></h1>

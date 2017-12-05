@@ -1,0 +1,93 @@
+{
+  "_from": "flesch",
+  "_id": "flesch@1.0.2",
+  "_inBundle": false,
+  "_integrity": "sha1-O/8MXR+hz21hqCX+WrdHRErI93I=",
+  "_location": "/flesch",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "flesch",
+    "name": "flesch",
+    "escapedName": "flesch",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/flesch/-/flesch-1.0.2.tgz",
+  "_shasum": "3bff0c5d1fa1cf6d61a825fe5ab747444ac8f772",
+  "_spec": "flesch",
+  "_where": "/Users/jasonstubbs/Projects/esp-solutions.github.io/assets/js",
+  "author": {
+    "name": "Titus Wormer",
+    "email": "tituswormer@gmail.com",
+    "url": "http://wooorm.com"
+  },
+  "bugs": {
+    "url": "https://github.com/words/flesch/issues"
+  },
+  "bundleDependencies": false,
+  "contributors": [
+    {
+      "name": "Titus Wormer",
+      "email": "tituswormer@gmail.com",
+      "url": "http://wooorm.com"
+    }
+  ],
+  "dependencies": {},
+  "deprecated": false,
+  "description": "Formula to detect the ease of reading a text according to Flesch Reading Ease (1975)",
+  "devDependencies": {
+    "browserify": "^14.0.0",
+    "esmangle": "^1.0.1",
+    "is-nan": "^1.2.1",
+    "nyc": "^11.0.0",
+    "remark-cli": "^4.0.0",
+    "remark-preset-wooorm": "^3.0.0",
+    "tape": "^4.0.0",
+    "xo": "^0.18.0"
+  },
+  "files": [
+    "index.js"
+  ],
+  "homepage": "https://github.com/words/flesch#readme",
+  "keywords": [
+    "flesch",
+    "readability",
+    "formula"
+  ],
+  "license": "MIT",
+  "name": "flesch",
+  "remarkConfig": {
+    "plugins": [
+      "preset-wooorm"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/words/flesch.git"
+  },
+  "scripts": {
+    "build": "npm run build-md && npm run build-bundle && npm run build-mangle",
+    "build-bundle": "browserify index.js --bare -s flesch > flesch.js",
+    "build-mangle": "esmangle flesch.js > flesch.min.js",
+    "build-md": "remark . -qfo",
+    "lint": "xo",
+    "test": "npm run build && npm run lint && npm run test-coverage",
+    "test-api": "node test",
+    "test-coverage": "nyc --reporter lcov tape test.js"
+  },
+  "version": "1.0.2",
+  "xo": {
+    "space": true,
+    "esnext": false,
+    "ignores": [
+      "flesch.js"
+    ]
+  }
+}

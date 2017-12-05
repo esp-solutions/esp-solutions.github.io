@@ -1,0 +1,19 @@
+@media print {
+
+  body > *:not(main), #disqus_thread {
+    display: none;
+  }
+
+  html {
+    font-size: 12pt;
+  }
+
+  body {
+    background: none;
+  }
+
+  h1 {
+    margin-top: 0;
+  }
+
+}

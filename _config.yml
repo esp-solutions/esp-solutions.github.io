@@ -1,7 +1,16 @@
-title: ESP Solutions
-description: >
-  Elegant, simple & practical solutions to your business problems.
+title: esp.solutions
+tagline: >
+  elegant, simple & practical solutions for real business value
+url: http://esp.solutions
+baseurl: ""
+permalink: pretty
 
-theme: jekyll-theme-architect
+sass:
+  sass_dir:          _sass
+  style:            :compressed
 
-google_analytics: UA-107150532-1
+plugins:
+  - jekyll-paginate
+  - jekyll-redirect-from
+
+analytics_id: UA-107150532-1

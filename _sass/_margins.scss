@@ -1,0 +1,16 @@
+h2 {
+  margin-top: (2 * $line-height);
+}
+
+p + p {
+  margin-top: (1 * $line-height);
+}
+
+.meta {
+  margin-top: (-1 * $line-height);
+  margin-bottom: (1 * $line-height);
+}
+
+#disqus_thread {
+  margin-top: (3 * $line-height);
+}

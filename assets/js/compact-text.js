@@ -3,7 +3,7 @@
     function main() {
         var targets = [];
 
-        document.querySelectorAll('.compact-text').forEach(function(element) {
+        document.querySelectorAll('h1, h2, h3, h4, h5, h6, .compact-text').forEach(function(element) {
             var target = {
                 element: element,
                 initialStyle: element.getAttribute('style') || ''
