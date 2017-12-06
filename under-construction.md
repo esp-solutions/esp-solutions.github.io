@@ -2,6 +2,7 @@
 layout: default
 title: Under Construction
 redirect_from: "/"
+redirect_from: "/under-maintenance/"
 ---
 
 # &#128679; Under Construction &#128679;
