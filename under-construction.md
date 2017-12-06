@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Under Maintenance
+title: Under Construction
 redirect_from: "/"
 ---
 
-# &#128679; Under Maintenance &#128679;
+# &#128679; Under Construction &#128679;
 
 Yes, it's a bit of 90s cliché, but preparing new content is taking longer than I thought it would. Watch this space!
 
