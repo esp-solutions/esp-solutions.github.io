@@ -1,5 +1,5 @@
 @function limit_color($color) {
-  $exclude-upper: 5%;
+  $exclude-upper: 2%;
   $exclude-lower: 10%;
   @return lighten(darken($color, ($exclude-lower + $exclude-upper)), $exclude-lower);
 }
@@ -48,6 +48,8 @@ $white: limit_color(#FFFFFF);
 
 $header-background-color: $black;
 $header-text-color: $maya-blue;
+$footer-background-color: $black;
+$footer-text-color: $white;
 $main-background-color: $white;
 $main-text-color: $black;
 $main-link-color: $navy-blue;
@@ -62,6 +64,11 @@ body {
 header {
   background: $header-background-color;
   color: $header-text-color;
+}
+
+footer {
+  background: $footer-background-color;
+  color: $footer-text-color;
 }
 
 main a {
