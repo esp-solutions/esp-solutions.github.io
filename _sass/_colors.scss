@@ -1,6 +1,6 @@
 @function limit_color($color) {
   $exclude-upper: 2%;
-  $exclude-lower: 12%;
+  $exclude-lower: 13%;
   @return lighten(darken($color, ($exclude-lower + $exclude-upper)), $exclude-lower);
 }
 
