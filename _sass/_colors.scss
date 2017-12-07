@@ -1,6 +1,6 @@
 @function limit_color($color) {
   $exclude-upper: 2%;
-  $exclude-lower: 10%;
+  $exclude-lower: 12%;
   @return lighten(darken($color, ($exclude-lower + $exclude-upper)), $exclude-lower);
 }
 
@@ -46,9 +46,8 @@ $white: limit_color(#FFFFFF);
 // $dark-cyan OR $navy-blue
 // $hot-pink OR $mango-tango
 
-$header-background-color: $black;
+$html-background-color: $black;
 $header-text-color: $maya-blue;
-$footer-background-color: $black;
 $footer-text-color: $white;
 $main-background-color: $white;
 $main-text-color: $black;
@@ -56,18 +55,22 @@ $main-link-color: $navy-blue;
 $debug-background-color: mix($white, $cotton-candy, 0%);
 
 
+html {
+  background: $html-background-color;
+}
+
 body {
   color: $main-text-color;
   background: $main-background-color;
 }
 
 header {
-  background: $header-background-color;
+  background: $html-background-color;
   color: $header-text-color;
 }
 
 footer {
-  background: $footer-background-color;
+  background: linear-gradient(to bottom, #000 0px, $html-background-color 0.25rem);
   color: $footer-text-color;
 }
 

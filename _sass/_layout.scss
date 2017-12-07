@@ -1,3 +1,6 @@
+$header-height: (4 * $line-height);
+$footer-height: (3 * $line-height);
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -25,8 +28,9 @@ header, main, footer {
 }
 
 main {
-  padding-top: (7 * $line-height);
-  padding-bottom: (5 * $line-height);
+  padding-top: (3 * $line-height + $header-height);
+  padding-bottom: (2 * $line-height + $footer-height);
+  height: 100%;
 }
 
 header {
@@ -34,6 +38,7 @@ header {
   top: 0;
   left: 0;
   right: 0;
+  height: $header-height;
 
   padding-top: (1 * $line-height);
   padding-bottom: (1 * $line-height);
@@ -47,7 +52,7 @@ header {
 
 footer {
   position: absolute;
-  height: (3 * $line-height);
+  height: ($footer-height);
   bottom: 0;
   left: 0;
   right: 0;
