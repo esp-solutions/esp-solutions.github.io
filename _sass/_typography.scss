@@ -11,7 +11,8 @@ $line-height: 0.8rem;
 
 html {
   font-family: 'PT Serif', serif;
-  font-size: calc(0.8em + 1.0vmin);
+  font-size: calc(0.7em + 1.5vmin);
+  text-rendering: optimizeLegibility;
 }
 
 header {
@@ -27,21 +28,16 @@ h1 {
 }
 
 h2 {
-  @include font-values(1.2rem, 0.425rem, $line-height);
+  @include font-values(1.2rem, 0.42rem, $line-height);
 }
 
 p {
-  @include font-values(1rem, 0.425rem, $line-height);
+  @include font-values(1rem, 0.44rem, $line-height);
 }
 
 .meta {
   font-family: 'PT Sans Caption', sans-serif;
   @include font-values(0.833rem, 0.55rem, $line-height);
-}
-
-strong {
-  font-weight: 700;
-  font-size: 1.05em;
 }
 
 pre, code {
@@ -50,5 +46,5 @@ pre, code {
 
 .copyright {
   font-family: 'PT Serif', serif;
-  @include font-values(0.833rem, 0.5rem, $line-height);
+  @include font-values(0.833rem, 0.49rem, $line-height);
 }

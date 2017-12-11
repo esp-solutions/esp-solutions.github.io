@@ -23,7 +23,7 @@ header, main, footer {
 }
 
 .container {
-  max-width: 40rem;
+  max-width: ($line-height * 47);
   margin: 0 auto;
 }
 
