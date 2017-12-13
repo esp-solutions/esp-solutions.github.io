@@ -1,23 +1,30 @@
-@media (max-width: 45rem) {
-  .meta li {
-    &:first-child, &:nth-child(2) {
+// ratio = 1.2
+h1 {
+  @include font-values(2.074rem, 0.55rem, $vertical-rhythm);
+}
+
+h2 {
+  @include font-values(1.44rem, 0.35rem, $vertical-rhythm);
+}
+
+.meta {
+  @include font-values(0.833rem, 0.55rem, $vertical-rhythm);
+}
+
+.copyright {
+  @include font-values(0.694rem, 0.55rem, $vertical-rhythm);
+}
+
+
+.meta {
+  li {
+    &:not(:last-child) {
       &:after {
-        display: inline;
-        content: "\A";
-        white-space: pre;
-      }
-    }
-    &:nth-child(3):after {
-      display: none;
-    }
-    &:nth-child(4) {
-      &:before {
-        display: inline;
-        content: " (";
-      }
-      &:after {
-        display: inline;
-        content: ")";
+        display: inline-block;
+        content: "-";
+        width: (2 * $vertical-rhythm);
+        text-align: center;
+        opacity: 0.75;
       }
     }
   }

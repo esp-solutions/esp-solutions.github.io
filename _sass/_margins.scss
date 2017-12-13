@@ -1,20 +1,15 @@
 h2 {
-  margin-top: (2 * $line-height);
+  margin-top: (2 * $vertical-rhythm);
 }
 
 p + p {
-  margin-top: (1 * $line-height);
-}
-
-.meta {
-  margin-top: (-1 * $line-height);
-  margin-bottom: (1 * $line-height);
+  margin-top: (1 * $vertical-rhythm);
 }
 
 #disqus_thread {
-  margin-top: (3 * $line-height);
+  margin-top: (3 * $vertical-rhythm);
 }
 
 .post-excerpt {
-  margin-bottom: (5 * $line-height);
+  margin-bottom: (3 * $vertical-rhythm);
 }

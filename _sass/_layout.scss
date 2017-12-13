@@ -1,5 +1,5 @@
-$header-height: (4 * $line-height);
-$footer-height: (3 * $line-height);
+$header-height: (4 * $vertical-rhythm);
+$footer-height: (3 * $vertical-rhythm);
 
 * {
   box-sizing: border-box;
@@ -12,7 +12,7 @@ html {
 }
 
 body {
-  line-height: $line-height;
+  line-height: $vertical-rhythm;
   min-height: 100%;
   position: relative;
 }
@@ -23,13 +23,13 @@ header, main, footer {
 }
 
 .container {
-  max-width: ($line-height * 47);
+  max-width: ($vertical-rhythm * 47);
   margin: 0 auto;
 }
 
 main {
-  padding-top: (3 * $line-height + $header-height);
-  padding-bottom: (2 * $line-height + $footer-height);
+  padding-top: (2 * $vertical-rhythm + $header-height);
+  padding-bottom: (2 * $vertical-rhythm + $footer-height);
   height: 100%;
 }
 
@@ -40,11 +40,11 @@ header {
   right: 0;
   height: $header-height;
 
-  padding-top: (1 * $line-height);
-  padding-bottom: (1 * $line-height);
+  padding-top: (1 * $vertical-rhythm);
+  padding-bottom: (1 * $vertical-rhythm);
 
   img {
-    height: (2 * $line-height);
+    height: (2 * $vertical-rhythm);
     width: auto;
     vertical-align: bottom;
   }
@@ -58,17 +58,27 @@ footer {
   right: 0;
 }
 
-.meta {
-  li {
-    display: inline;
-    &:not(:last-child) {
-      &:after {
-        display: inline-block;
-        content: "-";
-        width: (2 * $line-height);
-        text-align: center;
-        opacity: 0.75;
-      }
+.meta li {
+  display: inline;
+  margin-bottom: (1 * $vertical-rhythm);
+  &:first-child, &:nth-child(2) {
+    &:after {
+      display: inline;
+      content: "\A";
+      white-space: pre;
+    }
+  }
+  &:nth-child(3):after {
+    display: none;
+  }
+  &:nth-child(4) {
+    &:before {
+      display: inline;
+      content: " (";
+    }
+    &:after {
+      display: inline;
+      content: ")";
     }
   }
 }

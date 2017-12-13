@@ -1,11 +1,9 @@
-@function limit_color($color) {
-  $exclude-upper: 3%;
-  $exclude-lower: 7%;
-  @return lighten(darken($color, ($exclude-lower + $exclude-upper)), $exclude-lower);
-}
-
 @mixin link-text-outline($color) {
   text-shadow: 0.05em 0 0 $color, -0.05em 0 0 $color, 0 0.05em 0 $color, 0 -0.05em 0 $color, 0.1em 0 0 $color, -0.1em 0 0 $color;
+  &::selection {
+    text-shadow: none;
+    background: highlight;
+  }
 }
 
 @mixin link-underline($fg, $bg) {
@@ -22,26 +20,9 @@
 
   background-image: linear-gradient(to right, currentColor 0%, currentColor 100%);
   background-repeat: repeat-x;
-  background-position: bottom 0.1em center;
-  background-size: 100% 0.06em;
+  background-position: bottom 0.09em center;
+  background-size: 100% 0.09em;
 }
-
-$black: limit_color(#000000);
-$sherpa-blue: limit_color(#004949);
-$dark-cyan: limit_color(#009292);
-$hot-pink: limit_color(#FF6DB6);
-$cotton-candy: limit_color(#FFB6DB);
-$indigo: limit_color(#490092);
-$navy-blue: limit_color(#006DDB);
-$heliotrope: limit_color(#B66DFF);
-$maya-blue: limit_color(#6DB6FF);
-$columbia-blue: limit_color(#B6DBFF);
-$dark-red: limit_color(#920000);
-$olive: limit_color(#924900);
-$mango-tango: limit_color(#DB6D00);
-$free-speech-green: limit_color(#24FF24);
-$laser-lemon: limit_color(#FFFF6D);
-$white: limit_color(#FFFFFF);
 
 // $dark-cyan OR $navy-blue
 // $hot-pink OR $mango-tango
@@ -52,7 +33,7 @@ $footer-text-color: $white;
 $main-background-color: $white;
 $main-text-color: $black;
 $main-link-color: $navy-blue;
-$debug-background-color: mix($white, $cotton-candy, 0%);
+$debug-background-color: $cotton-candy;
 
 
 html {

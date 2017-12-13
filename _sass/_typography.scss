@@ -1,14 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=PT+Mono|PT+Sans+Caption:400,700|PT+Sans:400,700|PT+Serif:400,400i,700,700i');
 
-$line-height: 0.8rem;
-
-@mixin font-values($size, $padding, $line-height) {
-  font-size: $size;
-  padding-top: $padding;
-  padding-bottom: ($line-height - $padding);
-  line-height: (ceil($size / $line-height) * $line-height);
-}
-
 html {
   font-family: 'PT Serif', serif;
   font-size: calc(0.7em + 1.5vmin);
@@ -23,21 +14,22 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'PT Sans Caption', sans-serif;
 }
 
+// ratio = 1.125
 h1 {
-  @include font-values(1.44rem, 0.35rem, $line-height);
+  @include font-values(1.602rem, 0.7rem, $vertical-rhythm);
 }
 
 h2 {
-  @include font-values(1.2rem, 0.42rem, $line-height);
+  @include font-values(1.266rem, 0.41rem, $vertical-rhythm);
 }
 
 p {
-  @include font-values(1rem, 0.44rem, $line-height);
+  @include font-values(1rem, 0.44rem, $vertical-rhythm);
 }
 
 .meta {
   font-family: 'PT Sans Caption', sans-serif;
-  @include font-values(0.833rem, 0.55rem, $line-height);
+  @include font-values(0.889rem, 0.53rem, $vertical-rhythm);
 }
 
 pre, code {
@@ -46,5 +38,5 @@ pre, code {
 
 .copyright {
   font-family: 'PT Serif', serif;
-  @include font-values(0.833rem, 0.49rem, $line-height);
+  @include font-values(0.79rem, 0.52rem, $vertical-rhythm);
 }
