@@ -1,16 +1,26 @@
 html {
-  font-size: 60px !important;
+  font-size: 100px !important;
 }
 
 body {
-  background-image: repeating-linear-gradient(to bottom, transparent 0, transparent 50%, $debug-background-color 50%, $debug-background-color 50%, $debug-background-color 100%);
+  $stripe-height: ($vertical-rhythm);
+  $line-pos1: 0.61rem;
+  $line-pos2: ($line-pos1 + $stripe-height);
+  $color1: $debug-background-color;
+  $color2: transparent;
+  background-image: linear-gradient(to bottom, $color1 0, $color1 $line-pos1, $color2 $line-pos1, $color2 $line-pos2, $color1 $line-pos2, $color1 100%);
   background-repeat: repeat;
-  background-size: 100% (2 * $vertical-rhythm);
+  background-size: 100% (2 * $stripe-height);
 }
 
-header {
+header, footer {
   background-color: change_color($html-background-color, $alpha: 0.5);
+  background-image: none;
   a {
     text-shadow: none;
   }
+}
+
+.post-header {
+  display: block;
 }

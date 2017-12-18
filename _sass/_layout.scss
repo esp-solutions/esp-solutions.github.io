@@ -1,14 +1,13 @@
-$header-height: (4 * $vertical-rhythm);
-$footer-height: (3 * $vertical-rhythm);
-
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 
 html {
   height: 100%;
+  overflow: auto;
 }
 
 body {
@@ -17,19 +16,11 @@ body {
   position: relative;
 }
 
-header, main, footer {
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
 .container {
-  max-width: ($vertical-rhythm * 47);
   margin: 0 auto;
 }
 
 main {
-  padding-top: (2 * $vertical-rhythm + $header-height);
-  padding-bottom: (2 * $vertical-rhythm + $footer-height);
   height: 100%;
 }
 
@@ -40,11 +31,11 @@ header {
   right: 0;
   height: $header-height;
 
-  padding-top: (1 * $vertical-rhythm);
-  padding-bottom: (1 * $vertical-rhythm);
+  padding-top: (0.25 * $header-height);
+  padding-bottom: (0.25 * $header-height);
 
   img {
-    height: (2 * $vertical-rhythm);
+    height: (0.5 * $header-height);
     width: auto;
     vertical-align: bottom;
   }
@@ -58,35 +49,70 @@ footer {
   right: 0;
 }
 
-.meta li {
-  display: inline;
-  margin-bottom: (1 * $vertical-rhythm);
-  &:first-child, &:nth-child(2) {
+.meta {
+  padding-left: $standard-line-height;
+  li {
+    display: inline;
     &:after {
       display: inline;
       content: "\A";
       white-space: pre;
     }
-  }
-  &:nth-child(3):after {
-    display: none;
-  }
-  &:nth-child(4) {
-    &:before {
-      display: inline;
-      content: " (";
+    &:nth-last-child(2):after {
+      display: none;
     }
-    &:after {
-      display: inline;
-      content: ")";
+    &:last-child {
+      &:before {
+        display: inline;
+        content: " (";
+      }
+      &:after {
+        display: inline;
+        content: ")";
+      }
     }
   }
-}
-
-.content {
-  clear: both;
 }
 
 img {
   max-width: 100%;
+}
+
+
+.post-excerpt + .post-header {
+  margin-top: (2 * $standard-line-height);
+}
+
+.post-excerpt {
+  padding-bottom: $standard-line-height;
+}
+
+
+h2 {
+  background-image: linear-gradient(to right, currentColor 0%, currentColor 100%);
+  background-repeat: repeat-x;
+  background-position: top 0.51rem center;
+  background-size: 100% 0.08em;
+}
+
+
+.post-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  * {
+    flex: 0 0 auto;
+    margin-bottom: ($vertical-rhythm);
+  }
+  h1 {
+    flex-grow: 1;
+    flex-basis: 19rem;
+    max-width: 100%;
+  }
+  .meta {
+    padding-left: 1rem;
+    min-width: 12.5rem;
+  }
 }

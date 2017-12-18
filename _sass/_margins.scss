@@ -1,19 +1,42 @@
-h1 + p {
-  margin-top: (1 * $vertical-rhythm);
+header, main, footer {
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+main {
+  padding-top: (1 * $standard-line-height + $header-height);
+  padding-bottom: (3 * $standard-line-height + $footer-height);
+}
+
+.container {
+  max-width: $full-width;
+}
+
+main .container {
+  > * {
+    margin-left: auto;
+    max-width: $text-width;
+  }
+  .post-header, > h2 {
+    max-width: $full-width;
+  }
+  .no-indent {
+    margin-left: 0;
+  }
+}
+
+.result:not(:first-child) {
+  padding-top: (4 * $standard-line-height);
 }
 
 h2 {
-  margin-top: (2 * $vertical-rhythm);
+  margin-top: (1 * $standard-line-height);
 }
 
-p + p {
-  margin-top: (1 * $vertical-rhythm);
+:not(.post-header) + h2 {
+  margin-top: (1.5 * $standard-line-height);
 }
 
-#disqus_thread {
-  margin-top: (3 * $vertical-rhythm);
-}
-
-.post-excerpt {
-  margin-bottom: (3 * $vertical-rhythm);
+p + h3 {
+  margin-top: $vertical-rhythm;
 }

@@ -1,42 +1,54 @@
-@import url('https://fonts.googleapis.com/css?family=PT+Mono|PT+Sans+Caption:400,700|PT+Sans:400,700|PT+Serif:400,400i,700,700i');
+@import url('https://fonts.googleapis.com/css?family=PT+Sans+Caption:400,700|PT+Serif:400,400i,700');
 
 html {
   font-family: 'PT Serif', serif;
-  font-size: calc(0.7em + 1.5vmin);
+  //font-size: calc(0.7em + 1.5vmin);
+  font-size: calc(0.6em + 2vmin);
   text-rendering: optimizeLegibility;
 }
 
 header {
-  font-family: 'PT Sans', sans-serif;
+  font-family: 'PT Sans Caption', sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'PT Sans Caption', sans-serif;
 }
 
-// ratio = 1.125
-h1 {
-  @include font-values(1.602rem, 0.7rem, $vertical-rhythm);
-}
-
-h2 {
-  @include font-values(1.266rem, 0.41rem, $vertical-rhythm);
-}
-
-p {
-  @include font-values(1rem, 0.44rem, $vertical-rhythm);
-}
-
 .meta {
   font-family: 'PT Sans Caption', sans-serif;
-  @include font-values(0.889rem, 0.53rem, $vertical-rhythm);
-}
-
-pre, code {
-  font-family: 'PT Mono', monospace;
 }
 
 .copyright {
   font-family: 'PT Serif', serif;
-  @include font-values(0.79rem, 0.52rem, $vertical-rhythm);
+}
+
+
+h1 {
+  @include font-values(1.64rem, 0.45rem);
+}
+
+h2 {
+  @include font-values(1.4rem, 0.53rem);
+}
+
+h3 {
+  @include font-values(1.19rem, 0.59rem);
+}
+
+h4 {
+  @include font-values(1.02rem, 0.29rem);
+}
+
+p {
+  @include font-values(1rem, 0.24rem);
+}
+
+small {
+  @include font-values(0.73rem, 0.34rem);
+  display: block;
+}
+
+.meta {
+  @include font-values(0.74rem, 0.38rem);
 }

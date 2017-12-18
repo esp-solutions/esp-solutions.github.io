@@ -16,4 +16,19 @@
 {% assign approx_read_time = exact_read_time | plus: 2 | divided_by: 5 | times: 5 %}
 {% endif %}
 
-<ul class="meta"><li>by {{ post.author }}</li><li><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date_to_long_string}}</time></li><li>{% include numberWithCommas.html number=approx_word_count %} words</li><li>{% if approx_read_time <= 1 %}1 minute{% else %}{{ approx_read_time }} minutes{% endif %} to read</li></ul>
+<div class="post-header">
+    {% if include.with-link %}
+    <h1><a href="{{ post.url }}">{{ post.title }}</a></h1>
+    {% else %}
+    <h1>{{ post.title }}</h1>
+    {% endif %}
+    <ul class="meta">
+        {% if post.author %}
+        <li>by {{ post.author }}</li>
+        {% endif %}
+        {% if post.date %}
+        <li><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date_to_long_string}}</time></li>
+        {% endif %}
+        <li>{% include number-with-commas.html number=approx_word_count %} words</li><li>{% if approx_read_time <= 1 %}1 minute{% else %}{{ approx_read_time }} minutes{% endif %} to read</li>
+    </ul>
+</div>

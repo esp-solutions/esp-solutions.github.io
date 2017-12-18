@@ -1,13 +1,11 @@
 ---
-layout: default
+layout: site
 title: Home
 ---
 
 {% for post in site.posts %}
 
-<h1 class="compact-text"><a href="{{ post.url }}">{{ post.title }}</a></h1>
-
-{% include postMeta.html %}
+{% include post-header.html with-link=1 %}
 
 <div class="post-excerpt">
     {{ post.excerpt }}

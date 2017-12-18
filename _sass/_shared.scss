@@ -1,15 +1,11 @@
-$vertical-rhythm: 0.8rem;
 
-@mixin font-values($font-size, $padding-top, $vertical-rhythm) {
-  $line-height: (max(2, ceil(($font-size) / $vertical-rhythm)) * $vertical-rhythm);
-  $required-space: (ceil(($line-height + $padding-top) / $vertical-rhythm) * $vertical-rhythm);
-  $padding-bottom: ($required-space - $line-height - $padding-top);
+$vertical-rhythm: 0.7rem;
+$standard-line-height: (2 * $vertical-rhythm);
+$header-height: (2 * $standard-line-height);
+$footer-height: (1.5 * $standard-line-height);
 
-  font-size: $font-size;
-  line-height: $line-height;
-  padding-top: $padding-top;
-  padding-bottom: $padding-bottom;
-}
+$text-width: 33rem;
+$full-width: ($text-width + 0 * $vertical-rhythm);
 
 
 @function limit_color($color) {
@@ -34,3 +30,17 @@ $mango-tango: limit_color(#DB6D00);
 $free-speech-green: limit_color(#24FF24);
 $laser-lemon: limit_color(#FFFF6D);
 $white: limit_color(#FFFFFF);
+
+
+@mixin font-values($font-size, $padding-top) {
+  $line-height: (ceil($font-size * 1.2 / $vertical-rhythm) * $vertical-rhythm);
+  $padding: (ceil($padding-top / $vertical-rhythm) * $vertical-rhythm);
+  $padding-bottom: ($padding - $padding-top);
+
+  font-size: $font-size;
+  line-height: $line-height;
+  padding-top: $padding-top;
+  padding-bottom: $padding-bottom;
+  //border-top: $padding-top solid change_color($laser-lemon, $alpha: 0.5);
+  //border-bottom: $padding-bottom solid change_color($free-speech-green, $alpha: 0.5);
+}

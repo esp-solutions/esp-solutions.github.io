@@ -1,0 +1,12 @@
+---
+layout: site
+---
+
+{% assign post = page %}
+{% include post-header.html %}
+
+{{ content }}
+
+{% if jekyll.environment == "production" %}
+{% include disqus.html %}
+{% endif %}
