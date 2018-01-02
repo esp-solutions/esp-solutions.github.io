@@ -12,7 +12,7 @@ $selection-color: $laser-lemon;
 
 
 @mixin link-text-outline($color) {
-  text-shadow: 0.05em 0 0 $color, -0.05em 0 0 $color, 0 0.05em 0 $color, 0 -0.05em 0 $color, 0.1em 0 0 $color, -0.1em 0 0 $color;
+  text-shadow:0 0.05em 0 $color, 0 -0.05em 0 $color, 0.05em 0 0 $color, -0.05em 0 0 $color, 0.1em 0 0 $color, -0.1em 0 0 $color, 0 -0.1em 0 $color;
 }
 
 @mixin link-underline($fg, $bg) {
@@ -37,8 +37,8 @@ $selection-color: $laser-lemon;
 
   background-image: linear-gradient(to right, currentColor 0%, currentColor 100%);
   background-repeat: repeat-x;
-  background-position: bottom 0.12em center;
-  background-size: 100% 0.06em;
+  background-position: bottom 0.08em center;
+  background-size: 100% 0.07em;
 }
 
 

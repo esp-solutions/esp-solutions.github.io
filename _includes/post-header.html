@@ -10,10 +10,12 @@
 {% endfor %}
 
 {% assign exact_read_time = approx_word_count | plus: 90 | divided_by: 180 %}
-{% if exact_read_time < 5 %}
-{% assign approx_read_time = exact_read_time %}
+{% if exact_read_time <= 1 %}
+{% assign approx_read_time = "1 minute" %}
+{% elsif exact_read_time < 5 %}
+{% assign approx_read_time = exact_read_time | append: ' minutes' %}
 {% else %}
-{% assign approx_read_time = exact_read_time | plus: 2 | divided_by: 5 | times: 5 %}
+{% assign approx_read_time = exact_read_time | plus: 2 | divided_by: 5 | times: 5 | append: ' minutes' %}
 {% endif %}
 
 <div class="post-header">
@@ -24,11 +26,11 @@
     {% endif %}
     <ul class="meta">
         {% if post.author %}
-        <li>by {{ post.author }}</li>
+        <li><i class="far fa-user fa-xs"></i> {{ post.author }}</li>
         {% endif %}
         {% if post.date %}
-        <li><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date_to_long_string}}</time></li>
+        <li><i class="far fa-calendar-alt fa-xs"></i> <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %d, %Y" }}</time></li>
         {% endif %}
-        <li>{% include number-with-commas.html number=approx_word_count %} words</li><li>{% if approx_read_time <= 1 %}1 minute{% else %}{{ approx_read_time }} minutes{% endif %} to read</li>
+        <li><i class="far fa-clock fa-xs"></i> {{ approx_read_time }} to read {% include number-with-commas.html number=approx_word_count %} words</li>
     </ul>
 </div>

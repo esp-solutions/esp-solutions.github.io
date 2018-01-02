@@ -1,57 +1,111 @@
-(function() {
+$(function() {
+    var $targets = [];
 
-    function main() {
-        var targets = [];
-
-        document.querySelectorAll('h1, h2, h3, h4, h5, h6, .compact-text').forEach(function(element) {
-            var target = {
-                element: element,
-                initialStyle: element.getAttribute('style') || ''
-            };
-            if (target.initialStyle) {
-                target.initialStyle += ';';
-            }
-            targets.push(target);
-        });
-
-        function makePadding(elementWidth, padding) {
-            var newWidth = elementWidth - padding;
-            return 'width:' + newWidth + 'px;padding-right:' + padding + 'px';
-        }
-
-        function updateElementPaddingAmounts() {
-            targets.forEach(function(target) {
-                target.element.setAttribute('style', target.initialStyle);
-
-                var originalWidth = target.element.offsetWidth;
-                var originalHeight = target.element.offsetHeight;
-
-                var knownGoodPadding = 0;
-                var knownBadPadding = Math.ceil(target.element.offsetWidth);
-
-                while (knownBadPadding - knownGoodPadding > 1) {
-                    var testPadding = Math.floor((knownGoodPadding + knownBadPadding) / 2);
-
-                    var testStyle = target.initialStyle + makePadding(originalWidth, testPadding);
-                    target.element.setAttribute('style', testStyle);
-
-                    if (target.element.offsetHeight > originalHeight) {
-                        knownBadPadding = testPadding;
+    function addSpans(element) {
+        $(element).contents().each(function() {
+            if (this.nodeType === Node.TEXT_NODE) {
+                var unprocessed = this.textContent;
+                var replacement = "";
+                while (unprocessed.length > 0) {
+                    var pos = unprocessed.search(/\s/);
+                    if (pos < 0) {
+                        replacement += "<span>" + unprocessed + "</span>";
+                        unprocessed = "";
+                    } else if (pos > 0) {
+                        replacement += "<span>" + unprocessed.substr(0, pos) + "</span>";
+                        unprocessed = unprocessed.substr(pos);
                     } else {
-                        knownGoodPadding = testPadding;
+                        replacement += unprocessed.substr(0, 1);
+                        unprocessed = unprocessed.substr(1);
                     }
                 }
-
-                var style = target.initialStyle + makePadding(originalWidth, knownGoodPadding);
-                target.element.setAttribute('style', style);
-            });
-        }
-
-        updateElementPaddingAmounts();
-        window.addEventListener('resize', updateElementPaddingAmounts);
-        window.addEventListener('load', updateElementPaddingAmounts);
+                $(this).replaceWith($(replacement));
+            } else {
+                addSpans(this);
+            }
+        });
     }
 
-    document.addEventListener('DOMContentLoaded', main);
+    $('h1, h2, h3, h4, h5, h6, [data-compact]').each(function() {
+        addSpans(this);
+        $targets.push($(this));
+    });
 
-})();
+    function elementRelativePosition($element, $parent) {
+        var elementOffset = $element.offset();
+        var parentOffset = $parent.offset();
+
+        return {
+            left: elementOffset.left - parentOffset.left - parseFloat($parent.css("padding-left")),
+            top: elementOffset.top - parentOffset.top - parseFloat($parent.css("padding-top"))
+        };
+    }
+
+    function sortedUnique(arr) {
+        var sorted = arr.slice();
+        sorted.sort(function(a, b) { return a - b; });
+        unique = [];
+        $(sorted).each(function(index, value) {
+            if (unique.length === 0 || unique[unique.length - 1] !== value) {
+                unique.push(value);
+            }
+        });
+        return unique;
+    }
+
+    function updatePadding() {
+        $($targets).each(function() {
+            $target = this;
+            $target.css("padding-right", "");
+            var currentPadding = parseFloat($target.css("padding-right"));
+
+            var availableWidth = $target.innerWidth();
+            var targetLineCount = null;
+            var $spans = $target.find('span');
+
+            var optimalPadding = currentPadding;
+
+            for (var retry = 0; retry < 100; retry++) {
+                if ($spans.length <= 1) {
+                    break;
+                }
+
+                var rightOffsets = [];
+                var bottomOffsets = [];
+                $spans.each(function() {
+                    var $span = $(this);
+                    var offset = elementRelativePosition($span, $target);
+                    rightOffsets.push(offset.left + $span.innerWidth());
+                    bottomOffsets.push(offset.top + $span.innerHeight());
+                });
+
+                rightOffsets = sortedUnique(rightOffsets);
+                bottomOffsets = sortedUnique(bottomOffsets);
+
+                if (bottomOffsets.length <= 1 && (rightOffsets[rightOffsets.length - 1] / availableWidth) <= 0.62) {
+                    break;
+                }
+
+                if (targetLineCount === null) {
+                    targetLineCount = Math.max($target.data('compact') || 2, bottomOffsets.length);
+                }
+
+                if (bottomOffsets.length === targetLineCount) {
+                    optimalPadding = currentPadding;
+                } else if (bottomOffsets.length > targetLineCount) {
+                    break;
+                } else if (rightOffsets.length === bottomOffsets.length) {
+                    break
+                }
+
+                currentPadding = availableWidth - rightOffsets[rightOffsets.length - 1] + 1;
+                $target.css("padding-right", currentPadding);
+            }
+
+            $target.css("padding-right", optimalPadding);
+        });
+    }
+
+    $(window).on('resize', updatePadding);
+    updatePadding();
+});

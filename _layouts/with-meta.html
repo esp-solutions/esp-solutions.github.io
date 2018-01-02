@@ -5,7 +5,11 @@ layout: site
 {% assign post = page %}
 {% include post-header.html %}
 
+{% if content contains "<p>===</p>" %}
+{{ content | prepend: '<div class="post-excerpt">' | replace_first: "<p>===</p>", '</div><a class="anchor" id="read-more"></a>' }}
+{% else %}
 {{ content }}
+{% endif %}
 
 {% if jekyll.environment == "production" %}
 {% include disqus.html %}

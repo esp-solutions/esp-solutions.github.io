@@ -1,16 +1,16 @@
 
-$vertical-rhythm: 0.7rem;
-$standard-line-height: (2 * $vertical-rhythm);
-$header-height: (2 * $standard-line-height);
-$footer-height: (1.5 * $standard-line-height);
+$quantization: 0.4rem;
+$vertical-rhythm: 0.8rem;
+$header-height: (3 * $vertical-rhythm);
+$footer-height: (2 * $vertical-rhythm);
 
 $text-width: 33rem;
 $full-width: ($text-width + 0 * $vertical-rhythm);
 
 
 @function limit_color($color) {
-  $exclude-upper: 3%;
-  $exclude-lower: 7%;
+  $exclude-upper: 0.8%;
+  $exclude-lower: 13.3%;
   @return lighten(darken($color, ($exclude-lower + $exclude-upper)), $exclude-lower);
 }
 
@@ -32,9 +32,10 @@ $laser-lemon: limit_color(#FFFF6D);
 $white: limit_color(#FFFFFF);
 
 
-@mixin font-values($font-size, $padding-top) {
+@mixin font-values($font-size, $padding-top:0, $min-padding-bottom:0) {
   $line-height: (ceil($font-size * 1.2 / $vertical-rhythm) * $vertical-rhythm);
-  $padding: (ceil($padding-top / $vertical-rhythm) * $vertical-rhythm);
+
+  $padding: (ceil(($padding-top + $min-padding-bottom) / $quantization) * $quantization);
   $padding-bottom: ($padding - $padding-top);
 
   font-size: $font-size;

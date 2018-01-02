@@ -14,3 +14,5 @@ plugins:
   - jekyll-redirect-from
 
 analytics_id: UA-107150532-1
+
+excerpt_separator: "\n===\n"

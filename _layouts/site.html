@@ -7,11 +7,7 @@
 
 <a href="#main">skip to main content</a>
 
-<header role="banner">
-    <div class="container">
-        <div><a href="/" title="Home"><img src="/assets/img/logo-screen.png" title="{{ site.title }}" /></a></div>
-    </div>
-</header>
+<header role="banner"><div class="container"><a class="logo" href="/" title="Home"><img src="/assets/img/logo-screen.png" title="{{ site.title }}" /></a><button class="menu">M</button></div></header>
 
 <main id="main">
     <div class="container">
@@ -21,10 +17,18 @@
 
 <footer>
     <div class="container">
-        <small>&copy; <time datetime="{{ site.time | date_to_xmlschema }}">{{ site.time | date: '%Y' }}</time> Elegant Simple Practical Solutions Pty Ltd</small>
+        <div class="legal">&copy; <time datetime="{{ site.time | date_to_xmlschema }}">{{ site.time | date: '%Y' }}</time> Elegant Simple Practical Solutions Pty Ltd</div>
     </div>
 </footer>
 
+
+{% if jekyll.environment == "production" %}
+<script type="text/javascript" src="/assets/js/jquery-3.2.1.min.js"></script>
+{% else %}
+<script type="text/javascript" src="/assets/js/jquery-3.2.1.js"></script>
+{% endif %}
+<script type="text/javascript" src="/assets/js/compact-text.js"></script>
+<script type="text/javascript" src="/assets/js/shrink-header.js"></script>
 
 {% if site.analytics_id %}
 <script>
