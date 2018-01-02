@@ -40,7 +40,7 @@ $(function() {
         addSpans(this);
         $(this).find('span').each(function() {
             var $span = $(this);
-            if ($span.innerWidth() >= 3.9 * rem && $span[0].textContent.search(/\u00AD/) < 0) {
+            if ($span.innerWidth() >= 3.8 * rem && $span[0].textContent.search(/\u00AD/) < 0) {
                 $(this).css('background-color', '#fea');
             }
         });
