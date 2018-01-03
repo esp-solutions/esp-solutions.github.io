@@ -1,5 +1,5 @@
 ---
-layout: no-indent
+layout: default
 title: "&#128679;&nbsp;Under Construction&nbsp;&#128679;"
 redirect_from:
     - "/"
