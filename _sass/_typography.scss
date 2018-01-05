@@ -1,10 +1,9 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,700');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,800');
 @import url(//fonts.googleapis.com/earlyaccess/notosansjp.css);
 
 
 .body-font {
   font-family: 'Open Sans', 'Noto Sans JP', sans-serif;
-  font-weight: 300;
 }
 
 .heading-font {
@@ -18,7 +17,16 @@
 
 html {
   @extend .body-font;
-  font-size: calc(0.7em + 1.5vmin);
+  //font-size: calc(0.7em + 1.5vmin);
+  font-size: calc(0.8em + 1vmin);
+}
+
+* {
+  font-weight: inherit;
+}
+
+body {
+  font-weight: 300;
 }
 
 header {
@@ -40,27 +48,27 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  @include font-values(1.52rem, 0.11rem);
+  @include font-values(1.52rem, 0.14rem);
 }
 
 .meta {
-  @include font-values(0.87rem, 0.35rem);
+  @include font-values(0.87rem, 0.38rem);
 }
 
 p {
-  @include font-values(1rem, 0.7rem);
+  @include font-values(1rem, 0.75rem);
 }
 
 h2 {
-  @include font-values(1.32rem, 0.58rem);
+  @include font-values(1.32rem, 0.62rem);
 
   &:before {
     //background-position: top 0 center;
-    background-position: top 0.45rem center;
+    background-position: top 0.59rem center;
   }
   &:after {
     //background-position: bottom 0 center;
-    background-position: bottom 0.01rem center;
+    background-position: bottom 0.11rem center;
   }
 
   position: relative;
@@ -86,9 +94,9 @@ h2 {
 
 
 h3 {
-  @include font-values(1.15rem, 0.65rem);
+  @include font-values(1.15rem, 0.69rem);
 }
 
 h4 {
-  @include font-values(1rem, 0.7rem);
+  @include font-values(1rem, 0.74rem);
 }

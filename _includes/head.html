@@ -10,6 +10,12 @@
         {% endif %}
     </title>
 
+    <script>
+        if (navigator.platform && navigator.platform.match(/^win/i)) {
+            document.write('<style>body{font-weight:400 !important;}</style>');
+        }
+    </script>
+
     <link rel="stylesheet" href="{{ site.baseurl }}/styles.css?{{site.time | date: '%s%N'}}">
     <link rel="apple-touch-icon-precomposed" sizes="144x144"
           href="{{ site.baseurl }}/public/apple-touch-icon-precomposed.png">
