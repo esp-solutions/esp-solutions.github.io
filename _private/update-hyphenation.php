@@ -1,12 +1,6 @@
 #!/usr/bin/env php
 <?php
 
-function acceptable($replacement) {
-    $replacement = preg_replace('/^(.)-/', '\1', $replacement);
-    $replacement = preg_replace('/-(..?)$/', '\1', $replacement);
-    return $replacement;
-}
-
 $referenceDictionaryFile = __DIR__ . '/moby/mhyph.txt';
 $referenceDictionary = [];
 foreach (explode("\n", file_get_contents($referenceDictionaryFile)) as $line) {
@@ -20,7 +14,7 @@ foreach (explode("\n", file_get_contents($referenceDictionaryFile)) as $line) {
 
     if (preg_match('/[\x80-\xFF]/', $line)) continue;
 
-    $chunks = preg_split('/-/', acceptable($line));
+    $chunks = preg_split('/-/', $line);
 
     $referenceDictionary[implode('', $chunks)] = implode('-', $chunks);
 }
@@ -87,20 +81,15 @@ foreach ($files as $file) {
             $mapping[strtolower($word)] = $hyphenationDictionary[strtolower($word)];
         } else if (!isset($unvalidatedDictionary[$word]) && !isset($unvalidatedDictionary[strtolower($word)])) {
             if (isset($referenceDictionary[$word])) {
-                $referenceReplacement = acceptable($referenceDictionary[$word]);
+                $referenceReplacement = $referenceDictionary[$word];
             } else if (isset($referenceDictionary[strtolower($word)])) {
                 $word = strtolower($word);
-                $referenceReplacement = acceptable($referenceDictionary[$word]);
+                $referenceReplacement = $referenceDictionary[$word];
             } else {
                 $referenceReplacement = '';
             }
-            $generatedReplacement = acceptable(trim(`$hyphenateCmd $word`));
-            if ($referenceReplacement == $generatedReplacement) {
-                $mapping[$word] = $generatedReplacement;
-                $hyphenationDictionary[$word] = $generatedReplacement;
-            } else {
-                $unvalidatedDictionary[$word] = trim("$generatedReplacement $referenceReplacement");
-            }
+            $generatedReplacement = trim(`$hyphenateCmd $word`);
+            $unvalidatedDictionary[$word] = trim("$generatedReplacement $referenceReplacement");
         }
     }
 }
