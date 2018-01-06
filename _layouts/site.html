@@ -27,8 +27,8 @@
 {% else %}
 <script type="text/javascript" src="/assets/js/jquery-3.2.1.js"></script>
 {% endif %}
-<script type="text/javascript" src="/assets/js/compact-text.js"></script>
-<script type="text/javascript" src="/assets/js/shrink-header.js"></script>
+<script type="text/javascript" src="/assets/js/compact-text.js?{{site.time | date: '%s%N'}}"></script>
+<script type="text/javascript" src="/assets/js/shrink-header.js?{{site.time | date: '%s%N'}}"></script>
 
 {% if site.analytics_id %}
 <script>
