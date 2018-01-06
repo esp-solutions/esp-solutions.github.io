@@ -1,16 +1,17 @@
 
-$quantization: 0.42rem;
-$vertical-rhythm: 0.84rem;
+// xheight * 1.62 + full-height / 4
+// note, full-height is not font-height
+$quantization: 0.39rem;
+
+$vertical-rhythm: (2 * $quantization);
 $header-height: (3 * $vertical-rhythm);
 $footer-height: (3 * $vertical-rhythm);
 
-$text-width: 33rem;
-$full-width: ($text-width + 0 * $vertical-rhythm);
-
-
 @function limit_color($color) {
-  $exclude-upper: 0.8%;
+  $exclude-upper: 0%;
   $exclude-lower: 13.3%;
+  //$exclude-lower: 6.7%;
+  //$exclude-lower: 0%;
   @return lighten(darken($color, ($exclude-lower + $exclude-upper)), $exclude-lower);
 }
 

@@ -15,7 +15,7 @@ main {
 main .container {
   > * {
     margin-left: auto;
-    max-width: $text-width;
+    max-width: $full-width;
   }
   .post-header, > h2 {
     max-width: $full-width;
@@ -30,14 +30,14 @@ main .container {
 }
 
 .post-header + h2 {
-  margin-top: (2 * $vertical-rhythm);
-}
-
-h2 {
   margin-top: (3 * $vertical-rhythm);
 }
 
-:not(h3) + h3 {
+h2 {
+  margin-top: (4 * $vertical-rhythm);
+}
+
+p + h3 {
   margin-top: (1 * $vertical-rhythm);
 }
 

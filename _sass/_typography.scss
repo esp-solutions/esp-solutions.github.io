@@ -1,13 +1,15 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,800');
-@import url(//fonts.googleapis.com/earlyaccess/notosansjp.css);
+$font: 'informapro';
 
+// based on distribution of letters in english and a "nice" line length
+// aaaaabccdddeeeeeeeeffghhhhiiiiijklllmmnnnnnooooopqrrrrssssttttttuuvwxyz
+$full-width: 31.5rem;
 
 .body-font {
-  font-family: 'Open Sans', 'Noto Sans JP', sans-serif;
+  font-family: $font, sans-serif;
 }
 
 .heading-font {
-  font-family: 'Open Sans', 'Noto Sans JP', sans-serif;
+  font-family: $font, sans-serif;
   font-weight: 700;
 }
 
@@ -17,8 +19,7 @@
 
 html {
   @extend .body-font;
-  //font-size: calc(0.7em + 1.5vmin);
-  font-size: calc(0.8em + 1vmin);
+  font-size: calc(0.75em + 1.25vmin);
 }
 
 * {
@@ -48,27 +49,29 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  @include font-values(1.52rem, 0.14rem);
+  @include font-values(1.68rem, 0.07rem);
 }
 
 .meta {
-  @include font-values(0.87rem, 0.38rem);
+  @include font-values(0.87rem, 0.35rem);
 }
 
 p {
-  @include font-values(1rem, 0.75rem);
+  @include font-values(1rem, 0.69rem);
 }
 
 h2 {
-  @include font-values(1.32rem, 0.62rem);
+  @include font-values(1.32rem, 0.2rem, 0.2rem);
 
   &:before {
     //background-position: top 0 center;
-    background-position: top 0.48rem center;
+    //background-position: top 0.86rem center;
+    background-position: top 0.11rem center;
   }
   &:after {
     //background-position: bottom 0 center;
-    background-position: bottom 0 center;
+    //background-position: bottom 0.88rem center;
+    background-position: bottom 0.52rem center;
   }
 
   position: relative;
@@ -94,9 +97,9 @@ h2 {
 
 
 h3 {
-  @include font-values(1.15rem, 0.69rem);
+  @include font-values(1.15rem, 0.64rem);
 }
 
 h4 {
-  @include font-values(1rem, 0.74rem);
+  @include font-values(1rem, 0.7rem);
 }

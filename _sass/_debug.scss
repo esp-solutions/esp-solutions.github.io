@@ -1,11 +1,11 @@
 html {
-  font-size: 100px !important;
+  font-size: 50px !important;
 }
 
 body {
   $stripe-height: ($quantization);
   //$line-pos1: 0rem;
-  $line-pos1: 0.3rem;
+  $line-pos1: 0.27rem;
   //$stripe-height: ($vertical-rhythm / 2);
   //$line-pos1: 0.25rem;
   $line-pos2: ($line-pos1 + $stripe-height);
