@@ -82,12 +82,12 @@ $(function() {
                 rightOffsets = sortedUnique(rightOffsets);
                 bottomOffsets = sortedUnique(bottomOffsets);
 
-                if (bottomOffsets.length <= 1 && (rightOffsets[rightOffsets.length - 1] / availableWidth) <= 0.62) {
+                if (bottomOffsets.length <= 1) {
                     break;
                 }
 
                 if (targetLineCount === null) {
-                    targetLineCount = Math.max($target.data('compact') || 2, bottomOffsets.length);
+                    targetLineCount = Math.max($target.data('compact') || 1, bottomOffsets.length);
                 }
 
                 if (bottomOffsets.length === targetLineCount) {
