@@ -21,7 +21,7 @@ $selection-color: $laser-lemon;
   text-decoration: none;
 
   &:visited {
-    border-bottom-color: $fg;
+    color: darken($fg, 15%);
   }
 
   &:focus {
@@ -31,15 +31,11 @@ $selection-color: $laser-lemon;
     outline: none;
   }
 
-  &::selection {
-    @include link-text-outline($selection-color);
-  }
-
-  background-image: linear-gradient(to right, currentColor 0%, currentColor 100%);
+  $underline-color: mix($fg, $bg, 20%);
+  background-image: linear-gradient(to right, $underline-color 0%, $underline-color 100%);
   background-repeat: repeat-x;
   background-position: bottom 0.08em center;
   background-size: 100% 1px;
-  border-bottom: 1px solid $bg;
 }
 
 *::selection {
